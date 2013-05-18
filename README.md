@@ -2,15 +2,11 @@ Procbot is a stupid bot that works with processes.
 
 ## Installation
 
-There really isn't any, to speak of. Choose one:
+There really isn't any, to speak of.
 
     $ wget https://raw.github.com/jakebasile/procbot/master/procbot.py && chmod+x procbot.py
 
-or
-
-    $ pip install procbot
-
-both will add `procbot.py` to your path. `pip` will also install [PyYAML][] to make config files easier to read.
+You should also install [PyYAML][] to make config files easier to read.
 
 ## Configuration
 
