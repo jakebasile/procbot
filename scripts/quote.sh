@@ -14,8 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-touch logs/$1
-echo $2 |\
-    cat logs/$1 - |\
-    tail -n 10 - > logs/$1.tmp
-mv logs/$1.tmp logs/$1
+if [[ $1 == 'remember' ]]
+    then
+        grep -E $3 logs/$2 >> quotes/$2
+fi
+
+if [[ $1 == 'quote' ]]
+    then
+        echo "$2 said: $(grep -E $3 quotes/$2)"
+fi

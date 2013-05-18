@@ -2,6 +2,20 @@ nick: procbot
 nick_reg: (?:procbot|pb)
 adapter: simple
 scripts:
+    quote_remember:
+        trigger: ^%NICK,? remember (.*) about (.*)$
+        command:
+            - scripts/quote.sh
+            - remember
+            - "{0}"
+            - "{1}"
+    quote:
+        trigger: ^%NICK,? quote (.*) about (.*)$
+        command:
+            - scripts/quote.sh
+            - quote
+            - "{0}"
+            - "{1}"
     log:
         trigger: ^(.*)$
         command:

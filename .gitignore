@@ -4,3 +4,4 @@ env/
 procbot.egg-info/
 dist/
 logs/
+quotes/
