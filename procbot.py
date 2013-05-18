@@ -73,6 +73,7 @@ class XMPPAdapter(object):
         
         def room_message(msg):
             if msg['mucnick'] != self.config['full_name']:
+                log.debug('got MUC message ' + pprint.pformat(msg))
                 responses = self.bot.proc(msg['mucnick'], msg['body'])
                 for response in responses:
                     if response.strip() != '':
