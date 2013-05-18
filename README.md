@@ -2,11 +2,12 @@ Procbot is a stupid bot that works with processes.
 
 ## Installation
 
-There really isn't any, to speak of.
+    $ wget https://github.com/jakebasile/procbot/archive/master.tar.gz
+    $ tar xvvf master.tar.gz
+    $ cd procbot-master
+    $ ./procbot.py
 
-    $ wget https://raw.github.com/jakebasile/procbot/master/procbot.py && chmod+x procbot.py
-
-You should also install [PyYAML][] to make config files easier to read.
+You should also install [PyYAML][] to make config files easier to read and [sleekxmpp][] if you want to connect to an XMPP server.
 
 ## Configuration
 
@@ -32,11 +33,11 @@ You can also add a `transform` option. This one makes everything more serious.
 
 ## Running
 
-You can choose from two adapters. Simple or XMPP. I'll probably add an IRC adapter later.
+You can choose from two adapters. Simple or XMPP. I'll probably add an IRC adapter later. You can turn on extra logging with `-d` and specify a config file with `-c`. Logging goes to STDERR, so redirect it somewhere else if you don't want it.
 
 ### Simple
 
-The dumb adapter. It reads from STDIN and prints to STDOUT. You can turn on extra logging with `-d` and specify a config file with `-c`. Logging goes to STDERR, so redirect it somewhere else if you don't want it.
+The dumb adapter. It reads from STDIN and prints to STDOUT.
 
 Start it by adding this line to your config:
 
