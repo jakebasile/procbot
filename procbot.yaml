@@ -31,6 +31,13 @@ scripts:
             - scripts/stock.sh
             - "{0}"
         help: Gets a stock quote.
+    weather:
+        trigger: ^%NICK,? weather ([0-9]{5})$
+        command:
+            - scripts/weather.sh
+            - <INSERT_YOUR_WEATHER_API_KEY>
+            - "{0}"
+        help: Gets the weather for a zip code.
     aww:
         trigger: ^%NICK,? make me aww.*$
         command:
