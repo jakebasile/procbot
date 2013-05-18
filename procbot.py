@@ -50,6 +50,8 @@ class XMPPAdapter(object):
             },
         )
         client.resource = 'bot'
+        client.auto_authorize = True
+        client.auto_subscribe = True
         
         def start(event):
             client.send_presence()
