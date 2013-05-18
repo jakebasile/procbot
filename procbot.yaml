@@ -9,6 +9,7 @@ scripts:
             - remember
             - "{0}"
             - "{1}"
+        help: Remembers insightful comments.
     quote:
         trigger: ^%NICK,? quote (.*) about (.*)$
         command:
@@ -16,12 +17,14 @@ scripts:
             - quote
             - "{0}"
             - "{1}"
+        help: Delivers remembered wisdom.
     log:
         trigger: ^(.*)$
         command:
             - scripts/log.sh
             - "{user}"
             - "{0}"
+        help: Big brother is watching.
     aww:
         trigger: ^%NICK,? make me aww.*$
         command:
