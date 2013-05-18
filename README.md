@@ -24,6 +24,11 @@ You can use YAML if you have it, but it will fall back to JSON. Here's a config 
 
 `trigger` is the regex that must be matched to activate that script. It can have capture groups. These capture groups are replaced in the `command` args along with the `user` who sent it and their `message`. Note that `command` is broken into individual arguments. This is because they are run through Python's `subprocess` module with `shell=False` for added "security".
 
+You can also add a `transform` option. This one makes everything more serious.
+
+            transform:
+                in: ^(.*)$
+                out: "{0}!"
 ## Running
 
 At the moment, this doesn't have any sort of adapters. It reads from STDIN and prints to STDOUT. You can turn on extra logging with `-d` and specify a config file with `-c`. Logging goes to STDERR, so redirect it somewhere else if you don't want it.
