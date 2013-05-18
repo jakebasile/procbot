@@ -36,12 +36,13 @@ class ProcBot(object):
             key_config = config['scripts'][key]
             proc_key_config = {}
             if 'trigger' not in key_config:
-                load.error('No trigger in configuration for ' + key)
+                log.error('No trigger in configuration for ' + key)
                 continue
             if 'command' not in key_config:
-                load.error('No command in configuration for ' + key)
+                log.error('No command in configuration for ' + key)
+                continue
             if 'help' not in key_config:
-                load.warn('No help in configuration for ' + key)
+                log.warn('No help in configuration for ' + key)
             trigger = key_config['trigger'].replace(
                 '%NICK', nick_reg
             )
@@ -50,7 +51,7 @@ class ProcBot(object):
                 'key': key,
                 'trigger': re.compile(trigger, re.I),
                 'command': key_config['command'],
-                'help': key_config['help'],
+                'help': key_config.get('help', ''),
             }
             if 'transform' in key_config:
                 try:
