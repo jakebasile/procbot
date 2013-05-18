@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-curl -sL 'http://reddit.com/r/cats.json?limit=25' |\
+curl -sL 'http://www.reddit.com/r/cat/top.json?sort=top&t=day' |\
     grep -Eo '"url": ?"([^"]*\.(jpg|jpeg|png|gif))"' |\
     sed -E 's/.*(http.*)"/\1/' |\
     shuf |\
