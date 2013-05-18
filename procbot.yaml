@@ -2,10 +2,15 @@ nick: procbot
 nick_reg: (?:procbot|pb)
 adapter: simple
 scripts:
+    aww:
+        trigger: ^%NICK,? make me aww.*$
+        command:
+            - scripts/aww.sh
+        help: Makes you go "d'aww".
     cat:
         trigger: ^%NICK,? cat me.*$
         command:
-            - example_scripts/cat.sh
+            - scripts/cat.sh
         help: Displays a cat.
     ping:
         trigger: ^%NICK,? ping (\S*)$
