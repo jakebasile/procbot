@@ -10,6 +10,7 @@ setup(
     ],
     install_requires=[
         'pyyaml>=3.0,<4.0',
+        'sleekxmpp>=1.1,<=2.0',
     ],
     include_package_data=True,
 )

@@ -1,5 +1,6 @@
 nick: procbot
 nick_reg: (?:procbot|pb)
+adapter: simple
 scripts:
     ping:
         trigger: ^%NICK ,?ping (\S*)$
@@ -22,5 +23,6 @@ scripts:
         trigger: ^%NICK ,?.*fortune.*$
         command:
             - fortune
+            - -s
         help: Gets your fortune!
 

@@ -19,9 +19,93 @@ import subprocess
 import pprint
 import logging
 import sys
+import time
 
 logging.basicConfig()
 log = logging.getLogger(__name__)
+
+class XMPPAdapter(object):
+
+    def __init__(self, bot, config):
+        log.debug('Using XMPP adapter with config: ' + pprint.pformat(config))
+        self.bot = bot
+        self.config = config
+
+    def run(self):
+        log.info('Connecting to XMPP server.')
+        try:
+            import sleekxmpp
+        except ImportError:
+            log.fatal('Unable to load sleekxmpp!')
+            sys.exit(1)
+        client = sleekxmpp.ClientXMPP(self.config['jid'], self.config['password'])
+        client.register_plugin('xep_0045')
+        client.register_plugin('xep_0030')
+        client.register_plugin(
+            'xep_0199',
+            pconfig={
+                'keepalive': True,
+                'frequency': 60,
+                'timeout': 30,
+            },
+        )
+        client.resource = 'bot'
+        
+        def start(event):
+            client.send_presence()
+            client.get_roster()
+            for room in self.config['rooms']:
+                client.plugin['xep_0045'].joinMUC(room, self.config['full_name'], wait=True)
+
+        client.add_event_handler('session_start', start)
+
+        def message(msg):
+            if msg['type'] in ('normal', 'chat'):
+                log.debug('got message ' + pprint.pformat(msg))
+                responses = self.bot.proc('friend', msg['body'])
+                for response in responses:
+                    if response.strip() != '':
+                        msg.reply(response).send()
+
+        client.add_event_handler('message', message)
+        
+        def room_message(msg):
+            if msg['mucnick'] != self.config['full_name']:
+                responses = self.bot.proc(msg['mucnick'], msg['body'])
+                for response in responses:
+                    if response.strip() != '':
+                        client.send_message(mto=msg['from'].bare, mbody=response, mtype='groupchat')
+                        # deal with it
+                        time.sleep(0.5)
+
+        client.add_event_handler('groupchat_message', room_message)
+        if client.connect((self.config['server'], self.config['port'])):
+            log.info('Procbot started. Connected to XMPP server.')
+            client.process(block=True)
+        log.info('Procbot exiting')
+
+class SimpleAdapter(object):
+    
+    def __init__(self, bot):
+        log.debug('Using simple adapter')
+        self.bot = bot
+
+    def run(self):
+        log.info('Procbot started')
+        while True:
+            try:
+                inp = input()
+            except InterruptedError:
+                break
+            except EOFError:
+                break
+            except KeyboardInterrupt:
+                break
+            user, message = inp.split(':')
+            for res in self.bot.proc(user, message):
+                if res.strip() != '':
+                    print(res)
+        log.info('Procbot exiting')
 
 class ProcBot(object):
 
@@ -147,19 +231,9 @@ if __name__ == '__main__':
     log.debug('Configuration loaded: \n' + pprint.pformat(config))
     args.config.close()
     bot = ProcBot(config)
-    log.info('ProcBot started')
-    while True:
-        try:
-            inp = input()
-        except InterruptedError:
-            break
-        except EOFError:
-            break
-        except KeyboardInterrupt:
-            break
-        user, message = inp.split(':')
-        for res in bot.proc(user, message):
-            if res.strip() != '':
-                print(res)
-    log.info('Procbot stopping')
+    if config['adapter'] == 'simple':
+        adp = SimpleAdapter(bot)
+    elif config['adapter'] == 'xmpp':
+        adp = XMPPAdapter(bot, config['xmpp'])
+    adp.run()
 

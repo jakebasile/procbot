@@ -29,9 +29,18 @@ You can also add a `transform` option. This one makes everything more serious.
             transform:
                 in: ^(.*)$
                 out: "{0}!"
+
 ## Running
 
-At the moment, this doesn't have any sort of adapters. It reads from STDIN and prints to STDOUT. You can turn on extra logging with `-d` and specify a config file with `-c`. Logging goes to STDERR, so redirect it somewhere else if you don't want it.
+You can choose from two adapters. Simple or XMPP. I'll probably add an IRC adapter later.
+
+### Simple
+
+The dumb adapter. It reads from STDIN and prints to STDOUT. You can turn on extra logging with `-d` and specify a config file with `-c`. Logging goes to STDERR, so redirect it somewhere else if you don't want it.
+
+Start it by adding this line to your config:
+
+    adapter: simple
 
 It expects input in the format "$USER:$MESSAGE". 
 
@@ -41,8 +50,24 @@ It expects input in the format "$USER:$MESSAGE".
 
 EOF to end.
 
+### XMPP
+
+To connect to XMPP, add something like this to your config file. You need to have [sleekxmpp][] installed for it to work.
+
+    adapter: xmpp
+    xmpp:
+        server: chat.example.com
+        port: 5222
+        jid: procbot@chat.example.com
+        password: supersecretpassword
+        full_name: Proc Bot
+        rooms:
+            - fun@conf.example.com
+            - notfun@conf.example.com
+
 ## Why?
 
 I was bored on a Friday night.
 
 [PyYAML]: http://pyyaml.org/wiki/PyYAML
+[sleekxmpp]: http://sleekxmpp.com
