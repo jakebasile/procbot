@@ -26,7 +26,6 @@ then
 fi
 
 url="http://api.wunderground.com/api/$1/geolookup/conditions/q/$location.json"
-printf "url is %s\n" "$url"
 weather=$(curl -Ls $url|\
 	grep 'temp_f' |\
 	tr -dc '[0-9.]'\
