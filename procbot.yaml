@@ -1,0 +1,26 @@
+nick: procbot
+nick_reg: (?:procbot|pb)
+scripts:
+    ping:
+        trigger: ^%NICK ,?ping (\S*)$
+        command:
+            - ping
+            - -c 2
+            - -q
+            - "{0}"
+        transform: 
+            in: ^([0-9]+) packets transmitted, ([0-9]+) received, ([0-9]+%) packet loss, time ([0-9]+ms)$
+            out: "{0} tx {1} rx {2} loss {3}"
+        help: Pings a website.
+    hello:
+        trigger: ^.*\s*(hi|hello|yo|sup)\s*.*$
+        command:
+            - echo
+            - Greetings, meatbag designation {user}.
+        help: A friendly, completely non-threatening greeting.
+    fortune:
+        trigger: ^%NICK ,?.*fortune.*$
+        command:
+            - fortune
+        help: Gets your fortune!
+
