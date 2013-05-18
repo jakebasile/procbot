@@ -68,23 +68,6 @@ class ProcBot(object):
             )
         self.scripts = scripts
 
-    def run(self):
-        log.info('ProcBot started')
-        while True:
-            try:
-                inp = input()
-            except InterruptedError:
-                break
-            except EOFError:
-                break
-            except KeyboardInterrupt:
-                break
-            user, message = inp.split(':')
-            for res in self.proc(user, message):
-                if res.strip() != '':
-                    print(res)
-        log.info('Procbot stopping')
-
     def proc(self, user, message):
         log.info('Received message "{}" from {}'.format(message, user))
         for script in self.scripts:
@@ -164,5 +147,19 @@ if __name__ == '__main__':
     log.debug('Configuration loaded: \n' + pprint.pformat(config))
     args.config.close()
     bot = ProcBot(config)
-    bot.run()
+    log.info('ProcBot started')
+    while True:
+        try:
+            inp = input()
+        except InterruptedError:
+            break
+        except EOFError:
+            break
+        except KeyboardInterrupt:
+            break
+        user, message = inp.split(':')
+        for res in bot.proc(user, message):
+            if res.strip() != '':
+                print(res)
+    log.info('Procbot stopping')
 
