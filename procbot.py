@@ -112,7 +112,9 @@ class ProcBot(object):
     def __init__(self, config):
         log.debug('Processing configuration')
         nick = config.get('nick', 'procbot')
+        self.nick = nick
         nick_reg = config.get('nick_reg', '(pb|procbot)')
+        self.nick_reg = nick_reg
         log.debug('Using nick ' + nick)
         scripts = []
         for key in config['scripts']:
@@ -150,7 +152,25 @@ class ProcBot(object):
             log.debug('Processed config for {}:\n{}'.format(
                 key, pprint.pformat(proc_key_config))
             )
+        scripts.append(self.gen_help(scripts))
         self.scripts = scripts
+
+    def gen_help(self, scripts):
+        help_texts = [
+            (script['key'], script['trigger'].pattern, script['help'])
+            for script in scripts
+        ]
+        help_accumulator = ''
+        for help_text in help_texts:
+            help_accumulator += '{}\t{}\t{}'.format(*help_text) + '\n'
+        command = ['echo', help_accumulator]
+        trigger = re.compile('^{},? help$'.format(self.nick_reg), re.I)
+        return {
+            'key': 'help',
+            'trigger': trigger,
+            'command': command,
+            'help': 'RECURSION!',
+        }
 
     def proc(self, user, message):
         log.info('Received message "{}" from {}'.format(message, user))
