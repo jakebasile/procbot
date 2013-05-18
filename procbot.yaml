@@ -2,6 +2,12 @@ nick: procbot
 nick_reg: (?:procbot|pb)
 adapter: simple
 scripts:
+    log:
+        trigger: ^(.*)$
+        command:
+            - scripts/log.sh
+            - "{user}"
+            - "{0}"
     aww:
         trigger: ^%NICK,? make me aww.*$
         command:
