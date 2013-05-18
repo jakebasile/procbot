@@ -25,6 +25,12 @@ scripts:
             - "{user}"
             - "{0}"
         help: Big brother is watching.
+    stock:
+        trigger: ^%NICK,? stock price (.*)$
+        command:
+            - scripts/stock.sh
+            - "{0}"
+        help: Gets a stock quote.
     aww:
         trigger: ^%NICK,? make me aww.*$
         command:
