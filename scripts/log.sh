@@ -14,8 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-touch logs/$1
-echo $2 |\
-    cat logs/$1 - |\
-    tail -n 10 - > logs/$1.tmp
-mv logs/$1.tmp logs/$1
+touch logs/"$1"
+echo "$2" |\
+    cat logs/"$1" - |\
+    tail -n 10 - > logs/"$1.tmp"
+mv logs/"$1.tmp" logs/"$1"

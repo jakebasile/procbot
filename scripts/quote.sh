@@ -16,10 +16,11 @@
 
 if [[ $1 == 'remember' ]]
     then
-        grep -E $3 logs/$2 >> quotes/$2
+        grep -Ei "$3" logs/"$2" >> quotes/"$2"
 fi
 
 if [[ $1 == 'quote' ]]
     then
-        echo "$2 said: $(grep -E $3 quotes/$2)"
+        results=$(grep -Ei "$3" quotes/"$2")
+        echo "$2 said: $results"
 fi
