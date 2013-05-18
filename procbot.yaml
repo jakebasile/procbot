@@ -3,7 +3,7 @@ nick_reg: (?:procbot|pb)
 adapter: simple
 scripts:
     ping:
-        trigger: ^%NICK ,?ping (\S*)$
+        trigger: ^%NICK,? ping (\S*)$
         command:
             - ping
             - -c 2
@@ -18,9 +18,9 @@ scripts:
         command:
             - echo
             - Greetings, meatbag designation {user}.
-        help: A friendly, completely non-threatening greeting.
+        help: A friendly greeting.
     fortune:
-        trigger: ^%NICK ,?.*fortune.*$
+        trigger: ^%NICK,? .*fortune.*$
         command:
             - fortune
             - -s
