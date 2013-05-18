@@ -2,6 +2,11 @@ nick: procbot
 nick_reg: (?:procbot|pb)
 adapter: simple
 scripts:
+    cat:
+        trigger: ^%NICK,? cat me.*$
+        command:
+            - example_scripts/cat.sh
+        help: Displays a cat.
     ping:
         trigger: ^%NICK,? ping (\S*)$
         command:
