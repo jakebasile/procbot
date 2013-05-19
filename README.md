@@ -66,6 +66,13 @@ To connect to XMPP, add something like this to your config file. You need to hav
             - fun@conf.example.com
             - notfun@conf.example.com
 
+## Contribution
+1. Fork the repo!
+2. Clone the repo!
+3. git remote add upstream https://github.com/jakebasile/procbot
+4. Contribute!
+5. Pull Request! 
+
 ## Why?
 
 I was bored on a Friday night.

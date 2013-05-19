@@ -50,7 +50,7 @@ scripts:
     weather:
         trigger: ^%NICK,? weather ([0-9]{5})$
         command:
-            - scripts/weather.sh
+            - scripts/weather.py
             - <INSERT_YOUR_WEATHER_API_KEY>
             - "{0}"
         help: Gets the weather for a zip code.
