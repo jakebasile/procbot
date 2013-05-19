@@ -2,6 +2,13 @@ nick: procbot
 nick_reg: (?:procbot|pb)
 adapter: simple
 scripts:
+    lunch:
+        trigger: ^%NICK,? lunch (.*)$
+        command:
+            - scripts/lunch.py
+            - <INSERT_GOOGLE_PLACES_API_KEY>
+            - "{0}"
+            - <INSERT_LAT_LONG>
     quote_remember:
         trigger: ^%NICK,? remember (.*) about (.*)$
         command:
@@ -10,6 +17,15 @@ scripts:
             - "{0}"
             - "{1}"
         help: Remembers insightful comments.
+    cowquote:
+        trigger: ^%NICK,? cowquote (.*) about (.*)$
+        command:
+            - scripts/quote.sh
+            - quote
+            - "{0}"
+            - "{1}"
+            - cow
+        help: Delivers remembered wisdom in cow format.
     quote:
         trigger: ^%NICK,? quote (.*) about (.*)$
         command:
