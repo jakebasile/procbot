@@ -2,6 +2,13 @@ nick: procbot
 nick_reg: (?:procbot|pb)
 adapter: simple
 scripts:
+    lunch:
+        trigger: ^%NICK,? lunch (.*)$
+        command:
+            - scripts/lunch.py
+            - <INSERT_GOOGLE_PLACES_API_KEY>
+            - "{0}"
+            - <INSERT_LAT_LONG>
     quote_remember:
         trigger: ^%NICK,? remember (.*) about (.*)$
         command:
