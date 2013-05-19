@@ -13,7 +13,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 if [ ! $1 ]
 then
 	echo 'no key passed'
@@ -26,9 +25,11 @@ then
 fi
 
 url="http://api.wunderground.com/api/$1/geolookup/conditions/q/$location.json"
-weather=$(curl -Ls $url|\
-	grep 'temp_f' |\
-	tr -dc '[0-9.]'\
-)
+result="$(curl -Ls $url | ./json-parse.sh -b)"
+#TODO: Add logic to make sure response is what we want.
+tempf="$(echo "$result" | grep temp_f | cut -d '	' -f2- |  tr -d '\"')"
+img="$(echo "$result" | grep icon_url | cut -d '	' -f2- |  tr -d '\"')"
+weather="$(echo "$result" | grep 'current_observation.*"weather"' | cut -d '	' -f2- |  tr -d '\"')"
+loc="$(echo "$result" | grep 'observation_location.*"full"' | cut -d '	' -f2- |  tr -d '\"')"
 
-printf "Current Temperature in %s is %s°" "$location" "$weather"
+printf "It is currently %s° (%s) in %s. %s" "$tempf" "$weather" "$loc"  "$img" 
