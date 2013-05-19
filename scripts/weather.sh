@@ -19,7 +19,7 @@ then
 	echo 'no key passed'
 	exit
 fi
-location='US/TX/Austin'
+location='78701'
 if [ $2 ]
 then
 	location=$2
