@@ -22,5 +22,11 @@ fi
 if [[ $1 == 'quote' ]]
     then
         results=$(grep -Ei "$3" quotes/"$2")
-        echo "$2 said: $results"
+        if [[ $4 == 'cow' ]]
+            then
+                echo "$2 said:"
+                cowsay $results
+        else
+                echo "$2 said: $results"
+        fi
 fi

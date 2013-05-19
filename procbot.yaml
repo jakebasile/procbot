@@ -17,6 +17,15 @@ scripts:
             - "{0}"
             - "{1}"
         help: Remembers insightful comments.
+    cowquote:
+        trigger: ^%NICK,? cowquote (.*) about (.*)$
+        command:
+            - scripts/quote.sh
+            - quote
+            - "{0}"
+            - "{1}"
+            - cow
+        help: Delivers remembered wisdom in cow format.
     quote:
         trigger: ^%NICK,? quote (.*) about (.*)$
         command:
