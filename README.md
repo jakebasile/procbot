@@ -2,12 +2,11 @@ Procbot is a stupid bot that works with processes.
 
 ## Installation
 
-    $ wget https://github.com/jakebasile/procbot/archive/master.tar.gz
-    $ tar xvvf master.tar.gz
-    $ cd procbot-master
-    $ ./procbot.py
-
-You should also install [PyYAML][] to make config files easier to read and [sleekxmpp][] if you want to connect to an XMPP server.
+    $ git clone https://github.com/jakebasile/procbot.git
+    $ cd procbot
+    $ pip3 install . # needs to be python 3 version of pip!
+    $ mkdir logs quotes
+    $ procbot.py
 
 ## Configuration
 
