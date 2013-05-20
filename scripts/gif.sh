@@ -16,8 +16,7 @@
 
 # If shuf or gshuf are not available, you must install them 
 curl -sL 'http://www.reddit.com/r/gifs/top.json?sort=top&t=day' |\
-    sed "s/data/ð/g" |\
-    tr 'ð' '\n' |\
+    awk 'gsub(/data/,"\ndata") {print}' |\
     grep -v 'over_18": true' |\
     grep -Eo '"url": ?"([^"]*\.(gif))"' |\
     sed -E 's/.*(http.*)"/\1/' |\
