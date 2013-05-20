@@ -74,6 +74,16 @@ scripts:
         command:
             - scripts/gif.sh
         help: Displays an animated gif.
+    dealwithit:
+        trigger: ^.*deal with it.*$
+        command:
+            - scripts/gif.sh
+        help: Displays an animated gif.
+    obama:
+        trigger: ^.*obama.*$
+        command:
+            - scripts/gif.sh
+        help: Displays an animated gif.
     ping:
         trigger: ^%NICK,? ping (\S*)$
         command:
