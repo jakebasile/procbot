@@ -22,7 +22,7 @@ import sys
 import time
 
 logging.basicConfig()
-log = logging.getLogger(__name__)
+log = logging.getLogger('procbot')
 
 class XMPPAdapter(object):
 

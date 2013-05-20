@@ -21,6 +21,7 @@ curl -sL 'http://www.reddit.com/r/gifs/top.json?sort=top&t=day' |\
     grep -v 'over_18": true' |\
     grep -Eo '"url": ?"([^"]*\.(gif))"' |\
     sed -E 's/.*(http.*)"/\1/' |\
+<<<<<<< HEAD
     if which shuf > /dev/null; then
         shuf "$@"
     elif which gshuf > /dev/null; then
@@ -28,4 +29,7 @@ curl -sL 'http://www.reddit.com/r/gifs/top.json?sort=top&t=day' |\
     else
     	echo 'ERROR: Requires shuf or gshuf'
     fi|\
+=======
+    shuf |\
+>>>>>>> 70380d2b3e11f55f8b3b4caace359657f3a6a2ef
     head -n 1
