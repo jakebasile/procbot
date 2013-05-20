@@ -18,5 +18,5 @@
 curl -sL 'http://www.reddit.com/r/aww/top.json?sort=top&t=day' |\
     grep -Eo '"url": ?"([^"]*\.(jpg|jpeg|png|gif))"' |\
     sed -E 's/.*(http.*)"/\1/' |\
-    (shuf 1&>/dev/null || gshuf) |\
+    shuf |\
     head -n 1
