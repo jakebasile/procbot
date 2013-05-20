@@ -15,31 +15,40 @@
 # limitations under the License.
 
 #
-# Script is from http://www.cyberciti.biz/faq/howto-pass-perl-command-line-arguments/
+# Original script modified from http://www.cyberciti.biz/faq/howto-pass-perl-command-line-arguments/
 #
+
 
 if ( $#ARGV != 2 ) {
 	print "ERROR: Incorrect number of arguments";
 	exit;
 }
-$n1=$ARGV[0];
-$op=$ARGV[1];
-$n2=$ARGV[2];
-$ans=0;
-if ( $op eq "+" ) {
-	$ans = $n1 + $n2;
+
+$left = $ARGV[0];
+$operator = $ARGV[1];
+$right = $ARGV[2];
+$answer = 0;
+
+if ( $operator eq "+" ) {
+	$answer = $left + $right;
 }
-elsif ( $op eq "-"){
-	$ans = $n1 - $n2;
+elsif ( $operator eq "-"){
+	$answer = $left - $right;
 }
-elsif ( $op eq "/"){
-	$ans = $n1 / $n2;
+elsif ( $operator eq "/"){
+	$answer = $left / $right;
 }
-elsif ( $op eq "*"){
-	$ans = $n1 * $n2;
+elsif ( $operator eq "*"){
+	$answer = $left * $right;
+}
+elsif ( $operator eq "%") {
+	$answer = $left % $right;
+}
+elsif ( $operator eq "^") {
+	$answer = $left ** $right;
 }
 else {
-	print "Error: op must be +, -, *, / only\n";
+	print "Error: operator must be +, -, *, /, %, or ^";
 	exit;
 }
-print "$ans\n";
+print "$answer";

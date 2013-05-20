@@ -120,11 +120,11 @@ scripts:
             - "{1}"
         help: Chooses a choice at random
     math:
-        trigger: ^%NICK,? math ([0-9.]+) ([-_+/]) ([0-9.]+)$
+        trigger: ^%NICK,? math ([0-9.]+)(.*)([-\+\*\/\^\%])(.*)([0-9.]+)$
         command:
             - scripts/perl/math.pl
             - "{0}"
-            - "{1}"
             - "{2}"
+            - "{4}"
         help: Does math calculations
 
