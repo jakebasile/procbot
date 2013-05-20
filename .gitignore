@@ -5,3 +5,4 @@ procbot.egg-info/
 dist/
 logs/
 quotes/
+build/
