@@ -127,9 +127,9 @@ scripts:
             - "{2}"
             - "{4}"
         help: Does math calculation.
-    joke:
-        trigger: ^%NICK,? joke$
+    quote:
+        trigger: ^%NICK,? quote$
         command:
-            - scripts/ruby/joke.rb
-        help: Returns a Chuck Norris joke.
+            - scripts/ruby/quote.rb
+        help: Returns a random quote.
 
