@@ -2,12 +2,11 @@ Procbot is a stupid bot that works with processes.
 
 ## Installation
 
-    $ wget https://github.com/jakebasile/procbot/archive/master.tar.gz
-    $ tar xvvf master.tar.gz
-    $ cd procbot-master
-    $ ./procbot.py
-
-You should also install [PyYAML][] to make config files easier to read and [sleekxmpp][] if you want to connect to an XMPP server.
+    $ git clone https://github.com/jakebasile/procbot.git
+    $ cd procbot
+    $ pip3 install . # needs to be python 3 version of pip!
+    $ mkdir logs quotes
+    $ procbot.py
 
 ## Configuration
 
@@ -67,15 +66,19 @@ To connect to XMPP, add something like this to your config file. You need to hav
             - notfun@conf.example.com
 
 ## Contribution
+
+Want to add a script? Go for it!
+
 1. Fork the repo!
 2. Clone the repo!
-3. git remote add upstream https://github.com/jakebasile/procbot
-4. Contribute!
-5. Pull Request! 
+3. Contribute!
+4. Add name and url to CONTRIBUTORS.md!
+5. Pull Request!
 
 ## Why?
 
 I was bored on a Friday night.
+
 
 [PyYAML]: http://pyyaml.org/wiki/PyYAML
 [sleekxmpp]: http://sleekxmpp.com
