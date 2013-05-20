@@ -18,5 +18,11 @@
 curl -sL 'http://www.reddit.com/r/aww/top.json?sort=top&t=day' |\
     grep -Eo '"url": ?"([^"]*\.(jpg|jpeg|png|gif))"' |\
     sed -E 's/.*(http.*)"/\1/' |\
-    shuf |\
+    if which shuf > /dev/null; then
+        shuf "$@"
+    elif which gshuf > /dev/null; then
+        gshuf "$@"
+    else
+    	echo 'ERROR: Requires shuf or gshuf'
+    fi|\
     head -n 1
