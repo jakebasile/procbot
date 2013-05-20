@@ -77,13 +77,13 @@ scripts:
     dealwithit:
         trigger: ^.*deal with it.*$
         command:
-            - scripts/gif.sh
-        help: Displays an animated gif.
+            - scripts/dealwithit.sh
+        help: Displays a deal with it gif.
     obama:
         trigger: ^.*obama.*$
         command:
-            - scripts/gif.sh
-        help: Displays an animated gif.
+            - scripts/obama.sh
+        help: Displays a thanks obama! image
     ping:
         trigger: ^%NICK,? ping (\S*)$
         command:
