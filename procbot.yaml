@@ -64,6 +64,16 @@ scripts:
         command:
             - scripts/cat.sh
         help: Displays a cat.
+    dog:
+        trigger: ^%NICK,? dog me.*$
+        command:
+            - scripts/dog.sh
+        help: Displays a dog.
+    gif:
+        trigger: ^%NICK,? gif me.*$
+        command:
+            - scripts/gif.sh
+        help: Displays an animated gif.
     ping:
         trigger: ^%NICK,? ping (\S*)$
         command:
@@ -87,4 +97,9 @@ scripts:
             - fortune
             - -s
         help: Gets your fortune!
+    8ball:
+        trigger: ^%NICK,? .*8ball.*$
+        command:
+            - scripts/8ball.py
+        help: Answers a question with the magic 8-ball. 
 

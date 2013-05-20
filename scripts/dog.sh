@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # If shuf or gshuf are not available, you must install them 
-curl -sL 'http://www.reddit.com/r/cat/top.json?sort=top&t=day' |\
+curl -sL 'http://www.reddit.com/r/dogpictures/top.json?sort=top&t=day' |\
     grep -Eo '"url": ?"([^"]*\.(jpg|jpeg|png|gif))"' |\
     sed -E 's/.*(http.*)"/\1/' |\
     (shuf 1&>/dev/null || gshuf) |\
