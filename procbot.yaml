@@ -35,7 +35,7 @@ scripts:
             - "{1}"
         help: Delivers remembered wisdom.
     log:
-        trigger: ^(.*)$
+        trigger: ^((?:(?!%NICK).*))$
         command:
             - scripts/log.sh
             - "{user}"
