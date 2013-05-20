@@ -14,8 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# If shuf or gshuf are not available, you must install them 
 curl -sL 'http://www.reddit.com/r/aww/top.json?sort=top&t=day' |\
     grep -Eo '"url": ?"([^"]*\.(jpg|jpeg|png|gif))"' |\
     sed -E 's/.*(http.*)"/\1/' |\
-    shuf |\
+    (shuf 1&>/dev/null || gshuf) |\
     head -n 1
