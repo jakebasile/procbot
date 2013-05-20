@@ -66,15 +66,19 @@ To connect to XMPP, add something like this to your config file. You need to hav
             - notfun@conf.example.com
 
 ## Contribution
+
+Want to add a script? Go for it!
+
 1. Fork the repo!
 2. Clone the repo!
-3. git remote add upstream https://github.com/jakebasile/procbot
-4. Contribute!
-5. Pull Request! 
+3. Contribute!
+4. Add name and url to CONTRIBUTORS.md!
+5. Pull Request!
 
 ## Why?
 
 I was bored on a Friday night.
+
 
 [PyYAML]: http://pyyaml.org/wiki/PyYAML
 [sleekxmpp]: http://sleekxmpp.com
