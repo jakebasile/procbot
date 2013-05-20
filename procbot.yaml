@@ -126,5 +126,10 @@ scripts:
             - "{0}"
             - "{2}"
             - "{4}"
-        help: Does math calculations
+        help: Does math calculation.
+    joke:
+        trigger: ^%NICK,? joke$
+        command:
+            - scripts/ruby/joke.rb
+        help: Returns a Chuck Norris joke.
 
