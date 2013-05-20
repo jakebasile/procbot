@@ -126,10 +126,10 @@ scripts:
             - "{0}"
             - "{2}"
             - "{4}"
-        help: Does math calculations.
+        help: Does math calculations
     quote:
         trigger: ^%NICK,? quote$
         command:
             - scripts/ruby/quote.rb
-        help: Returns a random quote.
+        help: Returns a random quote
 
