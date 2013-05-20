@@ -126,7 +126,7 @@ scripts:
             - "{0}"
             - "{2}"
             - "{4}"
-        help: Does math calculation.
+        help: Does math calculations.
     quote:
         trigger: ^%NICK,? quote$
         command:
