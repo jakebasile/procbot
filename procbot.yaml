@@ -84,7 +84,7 @@ scripts:
         command:
             - scripts/bash/reddit.sh
             - "dealwithit"
-            - "gifs"
+            - "gif"
         help: Displays a deal with it gif.
     obama:
         trigger: ^.*obama.*$
