@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# Copyright 2013 Jake Basile
+# Copyright 2013 Jake Basile & Kyle Varga
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
