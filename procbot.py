@@ -104,7 +104,11 @@ class SimpleAdapter(object):
                 break
             except KeyboardInterrupt:
                 break
-            user, message = inp.split(':')
+            if ':' in inp:
+                user, message = inp.split(':')
+            else:
+                user = 'admin'
+                message = inp
             for res in self.bot.proc(user, message):
                 if res.strip() != '':
                     print(res)
