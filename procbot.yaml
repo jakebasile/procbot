@@ -5,14 +5,14 @@ scripts:
     lunch:
         trigger: ^%NICK,? lunch (.*)$
         command:
-            - scripts/lunch.py
+            - scripts/python/lunch.py
             - <INSERT_GOOGLE_PLACES_API_KEY>
             - "{0}"
             - <INSERT_LAT_LONG>
     quote_remember:
         trigger: ^%NICK,? remember (.*) about (.*)$
         command:
-            - scripts/quote.sh
+            - scripts/bash/quote.sh
             - remember
             - "{0}"
             - "{1}"
@@ -20,7 +20,7 @@ scripts:
     cowquote:
         trigger: ^%NICK,? cowquote (.*) about (.*)$
         command:
-            - scripts/quote.sh
+            - scripts/bash/quote.sh
             - quote
             - "{0}"
             - "{1}"
@@ -29,7 +29,7 @@ scripts:
     quote:
         trigger: ^%NICK,? quote (.*) about (.*)$
         command:
-            - scripts/quote.sh
+            - scripts/bash/quote.sh
             - quote
             - "{0}"
             - "{1}"
@@ -37,52 +37,52 @@ scripts:
     log:
         trigger: ^((?:(?!%NICK).*))$
         command:
-            - scripts/log.sh
+            - scripts/bash/log.sh
             - "{user}"
             - "{0}"
         help: Big brother is watching.
     stock:
         trigger: ^%NICK,? stock price (.*)$
         command:
-            - scripts/stock.sh
+            - scripts/bash/stock.sh
             - "{0}"
         help: Gets a stock quote.
     weather:
         trigger: ^%NICK,? weather ([0-9]{5})$
         command:
-            - scripts/weather.py
+            - scripts/python/weather.py
             - <INSERT_YOUR_WEATHER_API_KEY>
             - "{0}"
         help: Gets the weather for a zip code.
     aww:
         trigger: ^%NICK,? make me aww.*$
         command:
-            - scripts/aww.sh
+            - scripts/bash/aww.sh
         help: Makes you go "d'aww".
     cat:
         trigger: ^%NICK,? cat me.*$
         command:
-            - scripts/cat.sh
+            - scripts/bash/cat.sh
         help: Displays a cat.
     dog:
         trigger: ^%NICK,? dog me.*$
         command:
-            - scripts/dog.sh
+            - scripts/bash/dog.sh
         help: Displays a dog.
     gif:
         trigger: ^%NICK,? gif me.*$
         command:
-            - scripts/gif.sh
+            - scripts/bash/gif.sh
         help: Displays an animated gif.
     dealwithit:
         trigger: ^.*deal with it.*$
         command:
-            - scripts/dealwithit.sh
+            - scripts/bash/dealwithit.sh
         help: Displays a deal with it gif.
     obama:
         trigger: ^.*obama.*$
         command:
-            - scripts/obama.sh
+            - scripts/bash/obama.sh
         help: Displays a thanks obama! image
     ping:
         trigger: ^%NICK,? ping (\S*)$
@@ -110,12 +110,12 @@ scripts:
     8ball:
         trigger: ^%NICK,? .*8ball.*$
         command:
-            - scripts/8ball.py
+            - scripts/python/8ball.py
         help: Answers a question with the magic 8-ball. 
     choose:
         trigger: ^%NICK,? choose (.*) or (.*)$
         command:
-            - scripts/choose.js
+            - scripts/node/choose.js
             - "{0}"
             - "{1}"
         help: Chooses a choice at random
