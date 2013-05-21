@@ -135,9 +135,14 @@ scripts:
             - "{2}"
             - "{4}"
         help: Does math calculations
-    quote:
-        trigger: ^%NICK,? quote$
+    quotation:
+        trigger: ^%NICK,? quotation$
         command:
-            - scripts/ruby/quote.rb
-        help: Returns a random quote
+            - scripts/ruby/quotation.rb
+        help: Returns a random quotation
+    bitcoin:
+        trigger: ^%NICK,? bitcoin$
+        command:
+            - scripts/tcl/bitcoin.tcl
+        help: Returns latest price of bitcoin for Mt. Gox
 
