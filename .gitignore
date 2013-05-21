@@ -7,3 +7,4 @@ logs/
 quotes/
 build/
 .env
+db-karma

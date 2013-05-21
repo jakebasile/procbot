@@ -145,4 +145,24 @@ scripts:
         command:
             - scripts/tcl/bitcoin.tcl
         help: Returns latest price of bitcoin for Mt. Gox
-
+    addkarma:
+        trigger: ^\+1 (.*)$
+        command:
+            - scripts/python/karma.py
+            - "add"
+            - "{0}"
+        help: Adds one karma point to another user.
+    delkarma:
+        trigger: ^\-1 (.*)$
+        command:
+            - scripts/python/karma.py
+            - "del"
+            - "{0}"
+        help: Removes one karma point to another user.
+    karma:
+        trigger: ^%NICK,? karma (.*)$
+        command:
+            - scripts/python/karma.py
+            - "get"
+            - "{0}"
+        help: Adds one karma point to another user.
