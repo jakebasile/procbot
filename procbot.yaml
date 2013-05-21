@@ -70,7 +70,7 @@ scripts:
         trigger: ^%NICK,? dog me.*$
         command:
             - scripts/bash/reddit.sh
-            - "dogs"
+            - "dogpictures"
         help: Displays a dog.
     gif:
         trigger: ^%NICK,? gif me.*$
