@@ -57,32 +57,40 @@ scripts:
     aww:
         trigger: ^%NICK,? make me aww.*$
         command:
-            - scripts/bash/aww.sh
+            - scripts/bash/reddit.sh
+            - "aww"
         help: Makes you go "d'aww".
     cat:
         trigger: ^%NICK,? cat me.*$
         command:
-            - scripts/bash/cat.sh
+            - scripts/bash/reddit.sh
+            - "cat"
         help: Displays a cat.
     dog:
         trigger: ^%NICK,? dog me.*$
         command:
-            - scripts/bash/dog.sh
+            - scripts/bash/reddit.sh
+            - "dogs"
         help: Displays a dog.
     gif:
         trigger: ^%NICK,? gif me.*$
         command:
-            - scripts/bash/gif.sh
+            - scripts/bash/reddit.sh
+            - "gifs"
+            - "gif"
         help: Displays an animated gif.
     dealwithit:
         trigger: ^.*deal with it.*$
         command:
-            - scripts/bash/dealwithit.sh
+            - scripts/bash/reddit.sh
+            - "dealwithit"
+            - "gifs"
         help: Displays a deal with it gif.
     obama:
         trigger: ^.*obama.*$
         command:
-            - scripts/bash/obama.sh
+            - scripts/bash/reddit.sh
+            - "thanksobama"
         help: Displays a thanks obama! image
     ping:
         trigger: ^%NICK,? ping (\S*)$
