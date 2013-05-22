@@ -187,7 +187,10 @@ class ProcBot(object):
             if match is not None:
                 log.debug('Message matches trigger for ' + script['key'])
                 log.debug('found groups for this trigger: ' + pprint.pformat(match.groups()))
-                args = [arg.format(*match.groups(), user=user, message=message) for arg in script['command']]
+                if len(match.groups()) != 0:
+                    args = [arg.format(*match.groups(), user=user, message=message) for arg in script['command']]
+                else:
+                    args = script['command']
                 log.debug('Calling subprocess with args: ' + pprint.pformat(args))
                 try:
                     results = subprocess.check_output(
