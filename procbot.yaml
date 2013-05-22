@@ -64,7 +64,7 @@ scripts:
         trigger: ^%NICK,? cat me.*$
         command:
             - scripts/bash/reddit.sh
-            - "cat"
+            - "cats"
         help: Displays a cat.
     dog:
         trigger: ^%NICK,? dog me.*$
