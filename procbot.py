@@ -172,7 +172,7 @@ class ProcBot(object):
         help_texts.sort()
         for help_text in help_texts:
             for i, text in enumerate(help_text):
-                col_width[i] = max(len(text),col_width.get(i,0))
+                col_width[i] = max(len(text) + 1,col_width.get(i,0))
         for help_text in help_texts:
             help_accumulator += "".join(word.ljust(col_width[i]) for i,word in enumerate(help_text)) + '\n'
         command = ['echo', help_accumulator]
