@@ -169,6 +169,7 @@ class ProcBot(object):
         ]
         help_accumulator = ''
         col_width = {}
+        help_texts.sort()
         for help_text in help_texts:
             for i, text in enumerate(help_text):
                 col_width[i] = max(len(text),col_width.get(i,0))
