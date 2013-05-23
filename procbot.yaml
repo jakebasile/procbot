@@ -86,7 +86,7 @@ scripts:
         command:
             - scripts/python/reddit.py
             - "dealwithit"
-            - "alltime"
+            - "all"
             - "top"
             - "gif"
         help: Displays a deal with it gif.
@@ -95,7 +95,7 @@ scripts:
         command:
             - scripts/python/reddit.py
             - "thanksobama"
-            - "alltime"
+            - "all"
         help: Displays a thanks obama! image
     ping:
         trigger: ^%NICK,? ping (\S*)$

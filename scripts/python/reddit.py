@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-'''Shows a random image from /r/aww'''
+'''Shows a random image from a subreddit'''
 
 import urllib.request
 import urllib.parse
