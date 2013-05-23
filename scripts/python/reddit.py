@@ -32,14 +32,13 @@ filetypes = sys.argv[4] if len(sys.argv) > 4 else 'jpg|jpeg|gif|png'
 regex = '^.*\.(%s)$' % filetypes
 results = urllib.request.urlopen('http://reddit.com/r/%s.json?limit=100&t=%s&sort=%s' % (subreddit, timeframe, sort))
 if results.status != 200:
-	print(results.url)
-	sys.exit(0)
+	sys.exit(1)
 
 jsn = json.loads(results.read().decode('utf-8'))
 
 images = [
     str(c['data']['url'])
     for c in jsn['data']['children']
-    if re.match(regex, c['data']['url'])
+    if re.match(regex, c['data']['url']) and c['data']['over_18'] == False
 ]
 print(random.choice(images))
