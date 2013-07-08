@@ -34,6 +34,12 @@ scripts:
             - "{0}"
             - "{1}"
         help: Delivers remembered wisdom.
+    quotemash:
+        trigger: ^%NICK,? quotemash$
+        command:
+            - scripts/bash/quote.sh
+            - quotemash
+        help: Delivers random remembered wisdom.
     log:
         trigger: ^((?:(?!%NICK).*))$
         command:

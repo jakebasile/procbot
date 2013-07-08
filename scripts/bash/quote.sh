@@ -30,3 +30,11 @@ if [[ $1 == 'quote' ]]
                 echo "$2 said: $results"
         fi
 fi
+
+if [[ $1 == 'quotemash' ]]
+    then
+        results=$(cat "quotes/*" | shuf -n 5 )
+        echo "$results"
+    fi
+fi
+
