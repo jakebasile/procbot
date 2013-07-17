@@ -21,7 +21,7 @@ if len(sys.argv) != 3:
 	sys.exit(1)
 
 command = sys.argv[1]
-user = sys.argv[2]
+user = sys.argv[2].lower()
 
 db = dbm.open('db-karma', 'c')
 if command == 'add':
