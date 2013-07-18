@@ -162,18 +162,18 @@ scripts:
             - scripts/python/karma.py
             - "add"
             - "{0}"
-        help: Adds one karma point to another user.
+        help: Adds one karma to a thing.
     karma_del:
         trigger: ^\-1 (.*)$
         command:
             - scripts/python/karma.py
             - "del"
             - "{0}"
-        help: Removes one karma point to another user.
+        help: Removes one karma from a thing.
     karma:
         trigger: ^%NICK,? karma (.*)$
         command:
             - scripts/python/karma.py
             - "get"
             - "{0}"
-        help: Adds one karma point to another user.
+        help: Checks karma on a thing.
