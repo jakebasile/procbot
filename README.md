@@ -2,11 +2,20 @@ Procbot is a stupid bot that works with processes.
 
 ## Installation
 
-    $ git clone https://github.com/jakebasile/procbot.git
-    $ cd procbot
-    $ pip3 install -r requirements.txt # needs to be python 3 version of pip!
-    $ mkdir logs quotes
-    $ ./procbot.py
+Grab latest via Git for easy updating:
+
+```bash
+$ git clone https://github.com/jakebasile/procbot.git
+```
+
+then get it up and running:
+
+```bash
+$ cd procbot
+$ pip3 install sleekxmpp # If you want XMPP. You probably do.
+$ mkdir logs quotes # for the default log and quote scripts.
+$ ./procbot.py
+```
 
 ## Configuration
 
