@@ -1,0 +1,239 @@
+{
+    "nick": "procbot", 
+    "nick_reg": "(?:procbot|pb)", 
+    "adapter": "simple",
+    "scripts": {
+        "choose": {
+            "help": "Chooses a choice at random", 
+            "trigger": "^%NICK,? choose (.*) or (.*)$", 
+            "command": [
+                "scripts/node/choose.js", 
+                "{0}", 
+                "{1}"
+            ]
+        }, 
+        "aww": {
+            "help": "Makes you go \"d'aww\".", 
+            "trigger": "^%NICK,? make me aww.*$", 
+            "command": [
+                "scripts/python/reddit.py", 
+                "aww"
+            ]
+        }, 
+        "dog": {
+            "help": "Displays a dog.", 
+            "trigger": "^%NICK,? dog me.*$", 
+            "command": [
+                "scripts/python/reddit.py", 
+                "dogpictures"
+            ]
+        }, 
+        "gif": {
+            "help": "Displays an animated gif.", 
+            "trigger": "^%NICK,? gif me.*$", 
+            "command": [
+                "scripts/python/reddit.py", 
+                "gifs", 
+                "day", 
+                "top", 
+                "gif"
+            ]
+        }, 
+        "cowquote": {
+            "help": "Delivers remembered wisdom in cow format.", 
+            "trigger": "^%NICK,? cowquote (.*) about (.*)$", 
+            "command": [
+                "scripts/bash/quote.sh", 
+                "quote", 
+                "{0}", 
+                "{1}", 
+                "cow"
+            ]
+        }, 
+        "dealwithit": {
+            "help": "Displays a deal with it gif.", 
+            "trigger": "^.*deal with it.*$", 
+            "command": [
+                "scripts/python/reddit.py", 
+                "dealwithit", 
+                "all", 
+                "top", 
+                "gif"
+            ]
+        }, 
+        "karma": {
+            "help": "Checks karma on a thing.", 
+            "trigger": "^%NICK,? karma (.*)$", 
+            "command": [
+                "scripts/python/karma.py", 
+                "get", 
+                "{0}"
+            ]
+        }, 
+        "karma_add": {
+            "help": "Adds one karma to a thing.", 
+            "triggers": [
+                "^\\+1 (.*)$", 
+                "^([^ \\+\\-]*)\\+\\+$"
+            ], 
+            "command": [
+                "scripts/python/karma.py", 
+                "add", 
+                "{0}"
+            ]
+        }, 
+        "fortune": {
+            "help": "Gets your fortune!", 
+            "trigger": "^%NICK,? .*fortune.*$", 
+            "command": [
+                "fortune", 
+                "-s"
+            ]
+        }, 
+        "8ball": {
+            "help": "Answers a question with the magic 8-ball.", 
+            "trigger": "^%NICK,? .*8ball.*$", 
+            "command": [
+                "scripts/python/8ball.py"
+            ]
+        }, 
+        "obama": {
+            "help": "Displays a thanks obama! image", 
+            "trigger": "^.*obama.*$", 
+            "command": [
+                "scripts/python/reddit.py", 
+                "thanksobama", 
+                "all"
+            ]
+        }, 
+        "log": {
+            "help": "Big brother is watching.", 
+            "trigger": "^((?:(?!%NICK).*))$", 
+            "command": [
+                "scripts/bash/log.sh", 
+                "{user}", 
+                "{0}"
+            ]
+        }, 
+        "hello": {
+            "help": "A friendly greeting.", 
+            "trigger": "^.*\\s*(hi|hello|yo|sup)\\s*.*$", 
+            "command": [
+                "echo", 
+                "Greetings, meatbag designation {user}."
+            ]
+        }, 
+        "stock": {
+            "help": "Gets a stock quote.", 
+            "trigger": "^%NICK,? stock price (.*)$", 
+            "command": [
+                "scripts/bash/stock.sh", 
+                "{0}"
+            ]
+        }, 
+        "math": {
+            "help": "Does math calculations", 
+            "trigger": "^%NICK,? math ([0-9.]+)(.*)([-\\+\\*\\/\\^\\%])(.*)([0-9.]+)$", 
+            "command": [
+                "scripts/perl/math.pl", 
+                "{0}", 
+                "{2}", 
+                "{4}"
+            ]
+        }, 
+        "quote_remember": {
+            "help": "Remembers insightful comments.", 
+            "trigger": "^%NICK,? remember (.*) about (.*)$", 
+            "command": [
+                "scripts/bash/quote.sh", 
+                "remember", 
+                "{0}", 
+                "{1}"
+            ]
+        }, 
+        "cat": {
+            "help": "Displays a cat.", 
+            "trigger": "^%NICK,? cat me.*$", 
+            "command": [
+                "scripts/python/reddit.py", 
+                "cats"
+            ]
+        }, 
+        "quotemash": {
+            "help": "Delivers random remembered wisdom.", 
+            "trigger": "^%NICK,? quotemash$", 
+            "command": [
+                "scripts/bash/quote.sh", 
+                "quotemash"
+            ]
+        }, 
+        "quote": {
+            "help": "Delivers remembered wisdom.", 
+            "trigger": "^%NICK,? quote (.*) about (.*)$", 
+            "command": [
+                "scripts/bash/quote.sh", 
+                "quote", 
+                "{0}", 
+                "{1}"
+            ]
+        }, 
+        "lunch": {
+            "trigger": "^%NICK,? lunch (.*)$", 
+            "command": [
+                "scripts/python/lunch.py", 
+                "<INSERT_GOOGLE_PLACES_API_KEY>", 
+                "{0}", 
+                "<INSERT_LAT_LONG>"
+            ]
+        }, 
+        "karma_del": {
+            "help": "Removes one karma from a thing.", 
+            "triggers": [
+                "^\\-1 (.*)$", 
+                "^([^ \\+\\-]*)\\-\\-$"
+            ], 
+            "command": [
+                "scripts/python/karma.py", 
+                "del", 
+                "{0}"
+            ]
+        }, 
+        "bitcoin": {
+            "help": "Returns latest price of bitcoin for Mt. Gox", 
+            "trigger": "^%NICK,? bitcoin$", 
+            "command": [
+                "scripts/tcl/bitcoin.tcl"
+            ]
+        }, 
+        "ping": {
+            "help": "Pings a website.", 
+            "trigger": "^%NICK,? ping (\\S*)$", 
+            "transform": {
+                "out": "{0} tx {1} rx {2} loss {3}", 
+                "in": "^([0-9]+) packets transmitted, ([0-9]+) received, ([0-9]+%) packet loss, time ([0-9]+ms)$"
+            }, 
+            "command": [
+                "ping", 
+                "-c 2", 
+                "-q", 
+                "{0}"
+            ]
+        }, 
+        "weather": {
+            "help": "Gets the weather for a zip code.", 
+            "trigger": "^%NICK,? weather ([0-9]{5})$", 
+            "command": [
+                "scripts/python/weather.py", 
+                "<INSERT_YOUR_WEATHER_API_KEY>", 
+                "{0}"
+            ]
+        }, 
+        "quotation": {
+            "help": "Returns a random quotation", 
+            "trigger": "^%NICK,? quotation$", 
+            "command": [
+                "scripts/ruby/quotation.rb"
+            ]
+        }
+    }
+}

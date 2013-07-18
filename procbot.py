@@ -228,13 +228,9 @@ class ProcBot(object):
 
 if __name__ == '__main__':
     import argparse
-    try:
-        import yaml
-    except ImportError:
-        log.warn('Unable to load PyYAML, defaulting to JSON')
-        import json
+    import json
 
-    fmt = 'yaml' if 'yaml' in locals() else 'json'
+    fmt = 'json'
     
     parser = argparse.ArgumentParser(
         description='Another stupid bot, this time with Subprocesses!'
@@ -259,10 +255,7 @@ if __name__ == '__main__':
     if args.config == None:
         log.debug('Defaulting to ./procbot.{} for configuration'.format(fmt))
         args.config = open('procbot.{}'.format(fmt), 'r')
-    if fmt == 'yaml':
-        config = yaml.load(args.config)
-    else:
-        config = json.load(args.config)
+    config = json.load(args.config)
     log.debug('Configuration loaded: \n' + pprint.pformat(config))
     args.config.close()
     bot = ProcBot(config)
