@@ -157,14 +157,18 @@ scripts:
             - scripts/tcl/bitcoin.tcl
         help: Returns latest price of bitcoin for Mt. Gox
     karma_add:
-        trigger: ^\+1 (.*)$
+        triggers: 
+            - ^\+1 (.*)$
+            - ^([^ \+\-]*)\+\+$
         command:
             - scripts/python/karma.py
             - "add"
             - "{0}"
         help: Adds one karma to a thing.
     karma_del:
-        trigger: ^\-1 (.*)$
+        triggers: 
+            - ^\-1 (.*)$
+            - ^([^ \+\-]*)\-\-$
         command:
             - scripts/python/karma.py
             - "del"

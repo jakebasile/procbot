@@ -24,6 +24,14 @@ You can use YAML if you have it, but it will fall back to JSON. Here's a config 
 
 `trigger` is the regex that must be matched to activate that script. It can have capture groups. These capture groups are replaced in the `command` args along with the `user` who sent it and their `message`. Note that `command` is broken into individual arguments. This is because they are run through Python's `subprocess` module with `shell=False` for added "security".
 
+You can also specify multiple triggers with by using `triggers`. If you use capture groups, you should probably always have the same number of them. Example:
+
+        karma:
+            triggers:
+                - ^+1 (.*)$
+                - ^(.*)\+\+$
+        
+
 You can also add a `transform` option. This one makes everything more serious.
 
             transform:

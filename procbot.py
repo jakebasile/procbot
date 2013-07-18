@@ -128,7 +128,7 @@ class ProcBot(object):
             log.debug('Processing configuration for ' + key)
             key_config = config['scripts'][key]
             proc_key_config = {}
-            if 'trigger' not in key_config:
+            if 'trigger' not in key_config and 'triggers' not in key_config:
                 log.error('No trigger in configuration for ' + key)
                 continue
             if 'command' not in key_config:
@@ -136,13 +136,17 @@ class ProcBot(object):
                 continue
             if 'help' not in key_config:
                 log.warn('No help in configuration for ' + key)
-            trigger = key_config['trigger'].replace(
-                '%NICK', nick_reg
-            )
-            log.debug('{} trigger regex is {}'.format(key, trigger))
+            trigger_strs = []
+            if 'triggers' in key_config:
+                trigger_strs += key_config['triggers']
+            if 'trigger' in key_config:
+                trigger_strs.append(key_config['trigger'])
+            filtered_triggers = filter(lambda s: len(s) > 0, trigger_strs)
+            replaced_triggers = list(map(lambda t: t.replace('%NICK', nick_reg), filtered_triggers))
+            log.debug('{} trigger regexes are {}'.format(key, replaced_triggers))
             proc_key_config = {
                 'key': key,
-                'trigger': re.compile(trigger, re.I),
+                'triggers': list(map(lambda t: re.compile(t, re.I), replaced_triggers)),
                 'command': key_config['command'],
                 'help': key_config.get('help', ''),
             }
@@ -164,7 +168,11 @@ class ProcBot(object):
 
     def gen_help(self, scripts):
         help_texts = [
-            (script['key'], script['trigger'].pattern, script['help'])
+            (
+                script['key'],
+                '|'.join(t.pattern for t in script['triggers']),
+                script['help']
+            )
             for script in scripts
         ]
         help_accumulator = ''
@@ -174,12 +182,14 @@ class ProcBot(object):
             for i, text in enumerate(help_text):
                 col_width[i] = max(len(text) + 1,col_width.get(i,0))
         for help_text in help_texts:
-            help_accumulator += "".join(word.ljust(col_width[i]) for i,word in enumerate(help_text)) + '\n'
+            help_accumulator += "".join(
+                word.ljust(col_width[i]) for i,word in enumerate(help_text)
+            ) + '\n'
         command = ['echo', help_accumulator]
-        trigger = re.compile('^{},? help$'.format(self.nick_reg), re.I)
+        trigger = [re.compile('^{},? help$'.format(self.nick_reg), re.I)]
         return {
             'key': 'help',
-            'trigger': trigger,
+            'triggers': trigger,
             'command': command,
             'help': 'RECURSION!',
         }
@@ -187,8 +197,12 @@ class ProcBot(object):
     def proc(self, user, message):
         log.info('Received message "{}" from {}'.format(message, user))
         for script in self.scripts:
-            match = script['trigger'].match(message)
             log.debug('Testing message against trigger for ' + script['key'])
+            match = None
+            for t in script['triggers']:
+                match = t.match(message)
+                if match is not None:
+                    break
             if match is not None:
                 log.debug('Message matches trigger for ' + script['key'])
                 log.debug('found groups for this trigger: ' + pprint.pformat(match.groups()))
