@@ -1,3 +1,0 @@
-Copyright 2013 Jake Basile and Contributors
-http://www.jakebasile.com/projects/procbot/
-
