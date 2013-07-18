@@ -111,7 +111,7 @@ Want to add a script? Go for it!
 1. Fork the repo!
 2. Clone the repo!
 3. Contribute!
-4. Add name and url to CONTRIBUTORS.md!
+4. Add name and url to CONTRIBUTORS.txt!
 5. Pull Request!
 
 ## Why?
