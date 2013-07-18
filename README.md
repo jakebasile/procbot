@@ -4,9 +4,9 @@ Procbot is a stupid bot that works with processes.
 
     $ git clone https://github.com/jakebasile/procbot.git
     $ cd procbot
-    $ pip3 install . # needs to be python 3 version of pip!
+    $ pip3 install -r requirements.txt # needs to be python 3 version of pip!
     $ mkdir logs quotes
-    $ procbot.py
+    $ ./procbot.py
 
 ## Configuration
 
