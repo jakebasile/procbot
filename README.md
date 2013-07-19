@@ -17,6 +17,8 @@ $ mkdir logs quotes # for the default log and quote scripts.
 $ ./procbot.py
 ```
 
+Later, you can move this to your own (maybe private?) repo in order to add your own scripts to it. An easy(ish) way of doing that is to add the main repo as remote upstream, and merge in changes as needed.
+
 ## Configuration
 
 Here's a config for the most useless bot ever, an echobot.
